@@ -4,22 +4,23 @@ allprojects {
     }
 }
 
-// Apply the java plugin to add support for Java
 apply plugin: 'java'
 
-// In this section you declare where to find the dependencies of your project
 repositories {
-    // Use 'jcenter' for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
+    maven { url "https://jitpack.io" }
+    maven {
+        url "https://eiffel.lmera.ericsson.se/nexus/service/local/repositories/releases/content"
+    }
+    jcenter()
     flatDir {
         dirs 'libs'
     }
-    jcenter()
 }
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
-
+    compile group: 'com.ericsson.duraci', name: 'messaging', version:'35.0.3'
     compile 'com.github.Ericsson:eiffel-remrem-shared:0.1'
+    compile group: 'com.google.code.gson', name: 'gson', version: '1.7.2'
     testCompile 'junit:junit:4.12'
 }
